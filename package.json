@@ -1,0 +1,8 @@
+{
+  "name": "aircnc-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:wjard/aircnc-api.git",
+  "author": "Wesley Junior <wesley_jr40@msn.com>",
+  "license": "MIT"
+}
