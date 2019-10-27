@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = require('./routes');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 
@@ -10,7 +11,14 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
 
+//suportar json no retorno das requisições
 app.use(express.json());
+
+//diponibiliar uma url válida que aponta para a imagem salva na pasta upload
+const pathfile = path.resolve(__dirname, '..', 'uploads');
+app.use('/files', express.static(pathfile));
+
+//definição das rotas dos serivços expostos pela api
 app.use(routes);
 
 const mongo_uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PWD}@${process.env.MONGO_URL}/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
